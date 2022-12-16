@@ -3107,6 +3107,7 @@
                       placeholder="Votre nom"
                       class="input-field"
                       id="senderName"
+                      onblur="checkForm()"
                     />
                   </div>
                 </div>
@@ -3128,6 +3129,7 @@
                       placeholder="Votre email"
                       class="input-field"
                       id="senderEmail"
+                      onblur="checkForm()"
                     />
                   </div>
                 </div>
@@ -3149,14 +3151,18 @@
                       placeholder="Dites nous en plus sur votre projet ..."
                       class="input-field resize-none"
                       id="senderBody"
+                      onblur="checkForm()"
                     ></textarea>
                   </div>
                 </div>
                 <div class="w-full px-4">
                   <div class="pt-4 text-center">
                     <button
+                      id="btnSendMail"
                       class="inline-flex justify-center items-center py-4 px-9 rounded-full font-semibold text-white bg-primary mx-auto transition duration-300 ease-in-out hover:shadow-signUp hover:bg-opacity-90"
                       onclick="sendMail()"
+                      onmouseover="checkForm()"
+                      disabled="true"
                     >
                       Envoyer
                     </button>
@@ -3757,6 +3763,23 @@
           body;
         mail.click();
       }
+
+      var formOk = false;
+
+      function checkForm() {
+        var name = document.getElementById("senderName").value;
+        var email = document.getElementById("senderEmail").value;
+        var body = document.getElementById("senderBody").value;
+        if (name != "" && email != "" && body != "") {
+          console.log("ok");
+          document.getElementById("btnSendMail").disabled = false;
+        } else {
+          console.log("ko");
+          document.getElementById("btnSendMail").disabled = true;
+        }
+      }
+
+      checkForm();
     </script>
   </body>
 </html>
