@@ -2,6 +2,3 @@
 
 [context.production]
     command = "mv robots-production.txt robots.txt"
-
-    [context.production.branch-deploy]
-        command = "mv robots-disallow.txt robots.txt"
