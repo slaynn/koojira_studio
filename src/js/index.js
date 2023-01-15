@@ -1,11 +1,14 @@
-import '../../node_modules/glightbox/dist/css/glightbox.min.css';
-import '../css/animate.css';
-import '../css/style.css';
+import "../../node_modules/glightbox/dist/css/glightbox.min.css";
+import "../css/animate.css";
+import "../css/style.css";
 
-import imagesLoaded from 'imagesloaded';
-import Isotope from 'isotope-layout';
-import GLightbox from 'glightbox';
-import WOW from 'wowjs';
+import imagesLoaded from "imagesloaded";
+import Isotope from "isotope-layout";
+import GLightbox from "glightbox";
+import WOW from "wowjs";
+
+const sitemap = require("../../sitemap.xml");
+const robots = require("../../robots.txt");
 
 window.wow = new WOW.WOW({
   live: false,
@@ -17,25 +20,25 @@ window.wow.init({
 
 // ========= glightbox
 const myGallery = GLightbox({
-  type: 'image',
+  type: "image",
 });
 
 //============== isotope masonry js with imagesloaded
-imagesLoaded('.portfolio-container', function () {
-  var elem = document.querySelector('.items-wrapper');
+imagesLoaded(".portfolio-container", function () {
+  var elem = document.querySelector(".items-wrapper");
   var iso = new Isotope(elem, {
     // options
-    itemSelector: '.item',
+    itemSelector: ".item",
     masonry: {
       // use outer width of sizer for columnWidth
-      columnWidth: '.item',
+      columnWidth: ".item",
     },
   });
 
-  let filterButtons = document.querySelectorAll('.portfolio-buttons button');
+  let filterButtons = document.querySelectorAll(".portfolio-buttons button");
   filterButtons.forEach((e) =>
-    e.addEventListener('click', () => {
-      let filterValue = event.target.getAttribute('data-filter');
+    e.addEventListener("click", () => {
+      let filterValue = event.target.getAttribute("data-filter");
       iso.arrange({
         filter: filterValue,
       });
@@ -43,65 +46,70 @@ imagesLoaded('.portfolio-container', function () {
   );
 });
 
-var elements = document.querySelectorAll('.portfolio-buttons button');
+var elements = document.querySelectorAll(".portfolio-buttons button");
 for (var i = 0; i < elements.length; i++) {
   elements[i].onclick = function () {
     var el = elements[0];
     while (el) {
-      if (el.tagName === 'BUTTON') {
-        el.classList.remove('active');
+      if (el.tagName === "BUTTON") {
+        el.classList.remove("active");
       }
       el = el.nextSibling;
     }
-    this.classList.add('active');
+    this.classList.add("active");
   };
 }
 
 (function () {
-  'use strict';
+  "use strict";
 
   // ======= Sticky
   window.onscroll = function () {
-    const ud_header = document.querySelector('.header');
+    const ud_header = document.querySelector(".header");
     const sticky = ud_header.offsetTop;
 
     if (window.pageYOffset > sticky) {
-      ud_header.classList.add('sticky');
+      ud_header.classList.add("sticky");
     } else {
-      ud_header.classList.remove('sticky');
+      ud_header.classList.remove("sticky");
     }
 
     // show or hide the back-top-top button
-    const backToTop = document.querySelector('.back-to-top');
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      backToTop.style.display = 'flex';
+    const backToTop = document.querySelector(".back-to-top");
+    if (
+      document.body.scrollTop > 50 ||
+      document.documentElement.scrollTop > 50
+    ) {
+      backToTop.style.display = "flex";
     } else {
-      backToTop.style.display = 'none';
+      backToTop.style.display = "none";
     }
   };
 
   // ===== responsive navbar
-  let navbarToggler = document.querySelector('#navbarToggler');
-  const navbarCollapse = document.querySelector('#navbarCollapse');
+  let navbarToggler = document.querySelector("#navbarToggler");
+  const navbarCollapse = document.querySelector("#navbarCollapse");
 
-  navbarToggler.addEventListener('click', () => {
-    navbarToggler.classList.toggle('navbarTogglerActive');
-    navbarCollapse.classList.toggle('hidden');
+  navbarToggler.addEventListener("click", () => {
+    navbarToggler.classList.toggle("navbarTogglerActive");
+    navbarCollapse.classList.toggle("hidden");
   });
 
   //===== close navbar-collapse when a  clicked
-  document.querySelectorAll('#navbarCollapse ul li:not(.submenu-item) a').forEach((e) =>
-    e.addEventListener('click', () => {
-      navbarToggler.classList.remove('navbarTogglerActive');
-      navbarCollapse.classList.add('hidden');
-    })
-  );
+  document
+    .querySelectorAll("#navbarCollapse ul li:not(.submenu-item) a")
+    .forEach((e) =>
+      e.addEventListener("click", () => {
+        navbarToggler.classList.remove("navbarTogglerActive");
+        navbarCollapse.classList.add("hidden");
+      })
+    );
 
   // ===== Sub-menu
-  const submenuItems = document.querySelectorAll('.submenu-item');
+  const submenuItems = document.querySelectorAll(".submenu-item");
   submenuItems.forEach((el) => {
-    el.querySelector('a').addEventListener('click', () => {
-      el.querySelector('.submenu').classList.toggle('hidden');
+    el.querySelector("a").addEventListener("click", () => {
+      el.querySelector(".submenu").classList.toggle("hidden");
     });
   });
 
@@ -134,10 +142,10 @@ for (var i = 0; i < elements.length; i++) {
     return (-c / 2) * (t * (t - 2) - 1) + b;
   };
 
-  document.querySelector('.back-to-top').onclick = () => {
+  document.querySelector(".back-to-top").onclick = () => {
     scrollTo(document.documentElement);
   };
 })();
 
 // Document Loaded
-document.addEventListener('DOMContentLoaded', () => {});
+document.addEventListener("DOMContentLoaded", () => {});
