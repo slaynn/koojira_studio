@@ -34,7 +34,23 @@ const generateHTMLPlugins = () =>
       inject: "body",
     });
   });
+/*
+const generateHTMLPlugins2 = () =>
+  glob.sync("./src/projects/*.html").map((dir) => {
+    const filename = path.basename(dir);
 
+    if (filename !== "404.html") {
+      paths.push(filename);
+    }
+
+    return new HtmlWebpackPlugin({
+      filename,
+      template: `./src/projects/${filename}`,
+      //favicon: `./src/images/favicon.ico`,
+      inject: "body",
+    });
+  });
+  */
 module.exports = {
   mode: "development",
   entry: "./src/js/index.js",
@@ -94,6 +110,7 @@ module.exports = {
   },
   plugins: [
     ...generateHTMLPlugins(),
+    //...generateHTMLPlugins2(),
     new MiniCssExtractPlugin({
       filename: "style.css",
       chunkFilename: "style.css",
