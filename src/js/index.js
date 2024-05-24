@@ -1,6 +1,6 @@
-import "../../node_modules/glightbox/dist/css/glightbox.min.css";
-import "../css/animate.css";
-import "../css/style.css";
+import "glightbox/dist/css/glightbox.min.css";
+import "animate.css";
+import "style.css";
 
 import imagesLoaded from "imagesloaded";
 import Isotope from "isotope-layout";
